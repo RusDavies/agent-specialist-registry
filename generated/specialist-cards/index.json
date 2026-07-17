@@ -1,0 +1,21 @@
+{
+  "cards": [
+    {
+      "card_ref": "generated/specialist-cards/project-management.json",
+      "role_scope": "management",
+      "routing_hint": "Use when a request needs Project Management in management scope.",
+      "specialist_id": "project-management",
+      "specialist_name": "Project Management",
+      "status": "approved"
+    },
+    {
+      "card_ref": "generated/specialist-cards/learning-teaching-practitioner.json",
+      "role_scope": "practitioner",
+      "routing_hint": "Use when a request needs Learning / Teaching Practitioner in practitioner scope.",
+      "specialist_id": "learning-teaching-practitioner",
+      "specialist_name": "Learning / Teaching Practitioner",
+      "status": "review_required"
+    }
+  ],
+  "schema": "agent-specialist-registry.showcase.specialist-card-index.v1"
+}

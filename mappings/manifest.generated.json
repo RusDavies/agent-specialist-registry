@@ -1,0 +1,57 @@
+{
+  "artifacts": [
+    {
+      "combined_source_selection_sha256": "aa78382cf5fea5e8b293fd3dfb8c1b93ea15efb080a3887361bb6a1d7099b447",
+      "mapping_type": "discipline",
+      "outputs": {
+        "eval": "generated/evals/project-management.md",
+        "retrieval_chunk": "generated/retrieval-chunks/project-management.md",
+        "specialist_card": "generated/specialist-cards/project-management.json",
+        "task_pack": "generated/task-packs/project-management.md",
+        "wiki": "generated/wiki/project-management.md"
+      },
+      "requires_review": true,
+      "role_scope": "management",
+      "source_anchors": [
+        {
+          "anchor_block_sha256": "9edc4efb762922a278eb25051cf9beab0b43d00faeae95f6a14e87f2af11b7c7",
+          "id": "project-management"
+        }
+      ],
+      "source_corpus": "docs-management-practices",
+      "source_file": "disciplines/PROJECT_MANAGEMENT.md",
+      "source_repo": "fixtures/docs-management-practices",
+      "specialist_id": "project-management",
+      "specialist_name": "Project Management"
+    },
+    {
+      "combined_source_selection_sha256": "c824110c6f60eb81a2d01b5969b0248dc73260a54221d704624501e17caba45a",
+      "mapping_type": "role",
+      "outputs": {
+        "eval": "generated/evals/learning-teaching-practitioner.md",
+        "retrieval_chunk": "generated/retrieval-chunks/learning-teaching-practitioner.md",
+        "specialist_card": "generated/specialist-cards/learning-teaching-practitioner.json",
+        "task_pack": "generated/task-packs/learning-teaching-practitioner.md",
+        "wiki": "generated/wiki/learning-teaching-practitioner.md"
+      },
+      "requires_review": true,
+      "role_scope": "practitioner",
+      "source_anchors": [
+        {
+          "anchor_block_sha256": "a07c22ab66677aa3a978f7a3e1fb88b85b4215313f355609c7295a8e404e5e11",
+          "id": "learning-teaching-practitioner"
+        }
+      ],
+      "source_corpus": "docs-practitioner-practices",
+      "source_file": "roles/learning-teaching-practitioner.md",
+      "source_repo": "fixtures/docs-practitioner-practices",
+      "specialist_id": "learning-teaching-practitioner",
+      "specialist_name": "Learning / Teaching Practitioner"
+    }
+  ],
+  "generated_by": "public-showcase/scripts/build.py",
+  "schema": "agent-specialist-registry.showcase.generated.v1",
+  "source_selection_sha256": "28b1246a0d142c5321cd7622e14a0761e21aa78fb78f31ece1a0421edf742f28",
+  "specialist_card_index": "generated/specialist-cards/index.json",
+  "wiki_index": "generated/wiki/index.md"
+}

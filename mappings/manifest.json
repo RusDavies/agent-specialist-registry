@@ -1,0 +1,49 @@
+{
+  "schema": "agent-specialist-registry.showcase.mapping.v1",
+  "policy": {
+    "canonical_source": "fixture_corpora",
+    "agent_layer_may_adapt_format": true,
+    "agent_layer_may_change_doctrine": false,
+    "behavioral_artifacts_require_review": true
+  },
+  "mappings": [
+    {
+      "id": "project-management",
+      "name": "Project Management",
+      "mapping_type": "discipline",
+      "role_scope": "management",
+      "artifact_prefix": "project-management",
+      "source": {
+        "corpus": "docs-management-practices",
+        "repo": "fixtures/docs-management-practices",
+        "file": "disciplines/PROJECT_MANAGEMENT.md",
+        "anchors": ["project-management"]
+      },
+      "adjacent_practitioner_roles": [],
+      "adjacent_management_roles": []
+    },
+    {
+      "id": "learning-teaching-practitioner",
+      "name": "Learning / Teaching Practitioner",
+      "mapping_type": "role",
+      "role_scope": "practitioner",
+      "artifact_prefix": "learning-teaching-practitioner",
+      "source": {
+        "corpus": "docs-practitioner-practices",
+        "repo": "fixtures/docs-practitioner-practices",
+        "file": "roles/learning-teaching-practitioner.md",
+        "anchors": ["learning-teaching-practitioner"]
+      },
+      "adjacent_practitioner_roles": [],
+      "adjacent_management_roles": [
+        {
+          "id": "learning-and-teaching-management",
+          "name": "Learning and Teaching Management",
+          "corpus": "docs-management-practices",
+          "source_file": "disciplines/LEARNING_AND_TEACHING_MANAGEMENT.md"
+        }
+      ]
+    }
+  ]
+}
+

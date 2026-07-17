@@ -1,0 +1,32 @@
+{
+  "approved": true,
+  "artifact_refs": {
+    "eval": "generated/evals/project-management.md",
+    "retrieval_chunk": "generated/retrieval-chunks/project-management.md",
+    "task_pack": "generated/task-packs/project-management.md",
+    "wiki": "generated/wiki/project-management.md"
+  },
+  "authority_boundary": "Use for management framing, evidence needs, risks, options, and approval-owner identification. Do not use this artifact as hands-on practitioner/operator execution guidance. Human approval is required before changing commitments or accepting risk.",
+  "mapping_type": "discipline",
+  "review_evidence": "Synthetic fixture review for public showcase only.",
+  "reviewed_at": "2026-07-17T00:00:00Z",
+  "reviewer": "Showcase Fixture Reviewer",
+  "role_scope": "management",
+  "routing_hint": "Use when a request needs Project Management in management scope.",
+  "schema": "agent-specialist-registry.showcase.specialist-card.v1",
+  "source_refs": {
+    "anchors": [
+      {
+        "anchor_block_sha256": "9edc4efb762922a278eb25051cf9beab0b43d00faeae95f6a14e87f2af11b7c7",
+        "id": "project-management"
+      }
+    ],
+    "corpus": "docs-management-practices",
+    "file": "disciplines/PROJECT_MANAGEMENT.md",
+    "repo": "fixtures/docs-management-practices",
+    "source_selection_sha256": "aa78382cf5fea5e8b293fd3dfb8c1b93ea15efb080a3887361bb6a1d7099b447"
+  },
+  "specialist_id": "project-management",
+  "specialist_name": "Project Management",
+  "status": "approved"
+}

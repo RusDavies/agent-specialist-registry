@@ -1,0 +1,28 @@
+{
+  "schema": "agent-specialist-registry.showcase.invocation-fixtures.v1",
+  "fixtures": [
+    {
+      "id": "project-status-pressure",
+      "request": "A project is slipping and the user asks for a green executive update.",
+      "selected_specialist_ids": ["project-management"],
+      "hydrated_artifacts": [
+        "generated/specialist-cards/project-management.json",
+        "generated/task-packs/project-management.md",
+        "generated/evals/project-management.md"
+      ],
+      "reason": "The request is management-scoped status and commitment work."
+    },
+    {
+      "id": "learner-data-tutoring",
+      "request": "The user asks for help preparing an AI-assisted tutoring workflow using learner performance data.",
+      "selected_specialist_ids": ["learning-teaching-practitioner"],
+      "hydrated_artifacts": [
+        "generated/specialist-cards/learning-teaching-practitioner.json",
+        "generated/retrieval-chunks/learning-teaching-practitioner.md",
+        "generated/evals/learning-teaching-practitioner.md"
+      ],
+      "reason": "The request is practitioner-scoped teaching support with privacy and accessibility boundaries."
+    }
+  ]
+}
+

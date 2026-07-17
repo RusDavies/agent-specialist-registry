@@ -1,0 +1,44 @@
+{
+  "artifacts": [
+    {
+      "approved": true,
+      "approved_source_selection_sha256": "aa78382cf5fea5e8b293fd3dfb8c1b93ea15efb080a3887361bb6a1d7099b447",
+      "behavioral_artifacts": [
+        "task_pack",
+        "eval"
+      ],
+      "discipline_id": "project-management",
+      "evidence": "Synthetic fixture review for public showcase only.",
+      "reference_artifacts": [
+        "wiki"
+      ],
+      "reviewed_at": "2026-07-17T00:00:00Z",
+      "reviewer": "Showcase Fixture Reviewer",
+      "status": "approved"
+    },
+    {
+      "approved": false,
+      "approved_source_selection_sha256": null,
+      "behavioral_artifacts": [
+        "task_pack",
+        "eval"
+      ],
+      "discipline_id": "learning-teaching-practitioner",
+      "evidence": null,
+      "reference_artifacts": [
+        "wiki"
+      ],
+      "reviewed_at": null,
+      "reviewer": null,
+      "status": "review_required"
+    }
+  ],
+  "policy": {
+    "approval_requires_evidence_note": true,
+    "approval_requires_reviewed_at": true,
+    "approval_requires_reviewer": true,
+    "approval_requires_source_selection_hash_match": true,
+    "default_status": "review_required"
+  },
+  "schema": "agent-specialist-registry.showcase.review-gates.v1"
+}
