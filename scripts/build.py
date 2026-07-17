@@ -15,6 +15,30 @@ REVIEW_GATES_PATH = ROOT / "mappings" / "review-gates.json"
 INVOCATION_FIXTURES_PATH = ROOT / "mappings" / "invocation-fixtures.json"
 GENERATED_ROOT = ROOT / "generated"
 
+REQUIRED_PUBLIC_FILES = {
+    ".github/workflows/fixture-ci.yml",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "README.md",
+    "SECURITY.md",
+    "fixtures/docs-management-practices/disciplines/PROJECT_MANAGEMENT.md",
+    "fixtures/docs-practitioner-practices/roles/learning-teaching-practitioner.md",
+    "mappings/manifest.json",
+    "mappings/review-gates.json",
+    "scripts/build.py",
+    "scripts/ci_check.sh",
+}
+FORBIDDEN_MANAGEMENT_PATHS = {
+    "TODO.md",
+    "LIFECYCLE_STATE.md",
+    "target_split_state.md",
+    "refs",
+    "public-showcase",
+}
+ALLOWED_SOURCE_REPOS = {
+    "fixtures/docs-management-practices",
+    "fixtures/docs-practitioner-practices",
+}
 PRIVATE_PATTERNS = [
     "DOCS_" + "MANAGEMENT_PRACTICES_DEPLOY_KEY",
     "DOCS_" + "PRACTITIONER_PRACTICES_DEPLOY_KEY",
@@ -361,6 +385,36 @@ def check_invocation_fixtures(generated: dict) -> list[str]:
     return errors
 
 
+def check_public_repo_shape() -> list[str]:
+    errors: list[str] = []
+    for required in sorted(REQUIRED_PUBLIC_FILES):
+        if not (ROOT / required).is_file():
+            errors.append(f"missing required public file {required}")
+    for forbidden in sorted(FORBIDDEN_MANAGEMENT_PATHS):
+        if (ROOT / forbidden).exists():
+            errors.append(f"management-only path must not be present: {forbidden}")
+
+    manifest = load_json(MANIFEST_PATH)
+    for mapping in manifest["mappings"]:
+        source_repo = mapping["source"]["repo"]
+        if source_repo not in ALLOWED_SOURCE_REPOS:
+            errors.append(f"{mapping['id']}: source repo must be a fixture path, got {source_repo}")
+        source_path = ROOT / source_repo / mapping["source"]["file"]
+        try:
+            source_path.relative_to(ROOT / "fixtures")
+        except ValueError:
+            errors.append(f"{mapping['id']}: source file is outside fixtures: {source_path.relative_to(ROOT)}")
+
+    workflow_root = ROOT / ".github" / "workflows"
+    for workflow in workflow_root.glob("*.yml"):
+        text = workflow.read_text(encoding="utf-8")
+        disallowed = ["secrets.", "ssh-key", "deploy_key", "checkout@v4"]
+        for pattern in disallowed:
+            if pattern in text:
+                errors.append(f"{workflow.relative_to(ROOT)} contains disallowed CI dependency {pattern!r}")
+    return errors
+
+
 def check_public_safety() -> list[str]:
     errors: list[str] = []
     for path in ROOT.rglob("*"):
@@ -378,6 +432,7 @@ def check_public_safety() -> list[str]:
 def main() -> int:
     generated = build_artifacts()
     errors = []
+    errors.extend(check_public_repo_shape())
     errors.extend(check_review_gates(generated))
     generated = load_json(GENERATED_MANIFEST_PATH)
     errors.extend(check_drift(generated))

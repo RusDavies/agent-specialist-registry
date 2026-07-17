@@ -1,11 +1,12 @@
-# Agent Specialist Registry Showcase
+# Agent Specialist Registry
 
-This is a public-safe fixture version of the private agent specialist registry.
-It demonstrates the registry shape without exposing private source corpora,
-Discord approval evidence, lifecycle state, private TODOs, or deploy-key based
-CI.
+This is a public-safe fixture implementation of an agent specialist registry. It
+demonstrates the registry shape, generated specialist artifacts, review gates,
+role-scope boundaries, and compact invocation cards without relying on private
+source corpora, approval evidence, lifecycle state, internal TODOs, or
+secret-backed CI.
 
-The fixture keeps the important split from the private registry:
+The fixture keeps separate source corpora:
 
 - `fixtures/docs-management-practices/` contains management-scope source
   anchors.
@@ -22,12 +23,12 @@ and invocation fixtures.
 ./scripts/ci_check.sh
 ```
 
-The check uses only files in this directory. It does not clone private
-repositories, read deploy keys, or require repository secrets.
+The check uses only files in this repository. It does not clone private
+repositories, read deploy keys, or require repository secrets. CI runs the same
+fixture check.
 
 ## Public-Safety Boundary
 
-This showcase intentionally excludes private generated artifacts and private
+This repository intentionally excludes private generated artifacts and private
 review history. It uses synthetic fixture review records and source text written
 only for this demo.
-
