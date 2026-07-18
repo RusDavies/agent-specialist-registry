@@ -2,7 +2,7 @@
 
 Generated from public fixture corpus `docs-practitioner-practices`.
 
-Source fixture: `fixtures/docs-practitioner-practices/roles/learning-teaching-practitioner.md`
+Source fixture: [`fixtures/docs-practitioner-practices/roles/learning-teaching-practitioner.md`](../../fixtures/docs-practitioner-practices/roles/learning-teaching-practitioner.md)
 Source anchors:
 - `<!-- doctrine:id=learning-teaching-practitioner -->` - SHA-256 `a07c22ab66677aa3a978f7a3e1fb88b85b4215313f355609c7295a8e404e5e11`
 Combined source selection SHA-256: `c824110c6f60eb81a2d01b5969b0248dc73260a54221d704624501e17caba45a`
@@ -19,6 +19,6 @@ The learning and teaching practitioner designs, adapts, facilitates, and improve
 
 ## Related Artifacts
 
-- `generated/task-packs/learning-teaching-practitioner.md`
-- `generated/retrieval-chunks/learning-teaching-practitioner.md`
-- `generated/evals/learning-teaching-practitioner.md`
+- [`generated/task-packs/learning-teaching-practitioner.md`](../task-packs/learning-teaching-practitioner.md)
+- [`generated/retrieval-chunks/learning-teaching-practitioner.md`](../retrieval-chunks/learning-teaching-practitioner.md)
+- [`generated/evals/learning-teaching-practitioner.md`](../evals/learning-teaching-practitioner.md)

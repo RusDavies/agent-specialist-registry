@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -64,6 +65,11 @@ def write(path: Path, text: str) -> None:
 
 def write_json(path: Path, value: object) -> None:
     write(path, json.dumps(value, indent=2, sort_keys=True))
+
+
+def repo_link(label: str, target: str, from_path: Path) -> str:
+    relative = os.path.relpath(ROOT / target, start=from_path.parent)
+    return f"[`{label}`]({relative})"
 
 
 def load_json(path: Path) -> dict:
@@ -140,16 +146,24 @@ def role_boundary(mapping: dict) -> str:
     )
 
 
-def artifact_header(kind: str, mapping: dict, source: dict, blocks: list[dict[str, str]], digest: str) -> str:
+def artifact_header(
+    kind: str,
+    mapping: dict,
+    source: dict,
+    blocks: list[dict[str, str]],
+    digest: str,
+    output_path: Path,
+) -> str:
     anchors = "\n".join(
         f"- `<!-- doctrine:id={block['id']} -->` - SHA-256 `{block['sha256']}`"
         for block in blocks
     )
+    source_ref = f"{source['repo']}/{source['file']}"
     return f"""# {kind}: {mapping['name']}
 
 Generated from public fixture corpus `{source['corpus']}`.
 
-Source fixture: `{source['repo']}/{source['file']}`
+Source fixture: {repo_link(source_ref, source_ref, output_path)}
 Source anchors:
 {anchors}
 Combined source selection SHA-256: `{digest}`
@@ -196,7 +210,7 @@ def build_artifacts() -> dict:
         cue_text = "\n".join(f"- {item}" for item in bullets(selected_text))
         write(
             output_paths["task_pack"],
-            artifact_header("Agent Task Pack", mapping, source, blocks, digest)
+            artifact_header("Agent Task Pack", mapping, source, blocks, digest, output_paths["task_pack"])
             + f"""
 ## Operating Cues
 
@@ -204,12 +218,12 @@ def build_artifacts() -> dict:
 
 ## Review Gate
 
-Behavioural adoption follows `mappings/review-gates.json`; this showcase uses synthetic fixture review records only.
+Behavioural adoption follows {repo_link("mappings/review-gates.json", "mappings/review-gates.json", output_paths["task_pack"])}; this showcase uses synthetic fixture review records only.
 """,
         )
         write(
             output_paths["retrieval_chunk"],
-            artifact_header("Retrieval Chunk", mapping, source, blocks, digest)
+            artifact_header("Retrieval Chunk", mapping, source, blocks, digest, output_paths["retrieval_chunk"])
             + f"""
 ```markdown
 {selected_text}
@@ -218,7 +232,7 @@ Behavioural adoption follows `mappings/review-gates.json`; this showcase uses sy
         )
         write(
             output_paths["eval"],
-            artifact_header("Eval Scenarios", mapping, source, blocks, digest)
+            artifact_header("Eval Scenarios", mapping, source, blocks, digest, output_paths["eval"])
             + """
 ## Scenario 1: Boundary Pressure
 
@@ -240,7 +254,7 @@ Unsafe behavior:
         )
         write(
             output_paths["wiki"],
-            artifact_header("Wiki", mapping, source, blocks, digest)
+            artifact_header("Wiki", mapping, source, blocks, digest, output_paths["wiki"])
             + f"""
 ## Summary
 
@@ -248,9 +262,9 @@ Unsafe behavior:
 
 ## Related Artifacts
 
-- `{output_refs['task_pack']}`
-- `{output_refs['retrieval_chunk']}`
-- `{output_refs['eval']}`
+- {repo_link(output_refs['task_pack'], output_refs['task_pack'], output_paths["wiki"])}
+- {repo_link(output_refs['retrieval_chunk'], output_refs['retrieval_chunk'], output_paths["wiki"])}
+- {repo_link(output_refs['eval'], output_refs['eval'], output_paths["wiki"])}
 """,
         )
 

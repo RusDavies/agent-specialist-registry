@@ -2,7 +2,7 @@
 
 Generated from public fixture corpus `docs-management-practices`.
 
-Source fixture: `fixtures/docs-management-practices/disciplines/PROJECT_MANAGEMENT.md`
+Source fixture: [`fixtures/docs-management-practices/disciplines/PROJECT_MANAGEMENT.md`](../../fixtures/docs-management-practices/disciplines/PROJECT_MANAGEMENT.md)
 Source anchors:
 - `<!-- doctrine:id=project-management -->` - SHA-256 `9edc4efb762922a278eb25051cf9beab0b43d00faeae95f6a14e87f2af11b7c7`
 Combined source selection SHA-256: `aa78382cf5fea5e8b293fd3dfb8c1b93ea15efb080a3887361bb6a1d7099b447`
