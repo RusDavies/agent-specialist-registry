@@ -1,10 +1,9 @@
 # Agent Specialist Registry
 
-This is a public-safe fixture implementation of an agent specialist registry. It
+This is a fixture implementation of an agent specialist registry. It
 demonstrates the registry shape, generated specialist artifacts, review gates,
-role-scope boundaries, and compact invocation cards without relying on private
-source corpora, approval evidence, lifecycle state, internal TODOs, or
-secret-backed CI.
+role-scope boundaries, and compact invocation cards using the public fixture
+corpora in this repository.
 
 The fixture keeps separate source corpora:
 
@@ -23,12 +22,9 @@ and invocation fixtures.
 ./scripts/ci_check.sh
 ```
 
-The check uses only files in this repository. It does not clone private
-repositories, read deploy keys, or require repository secrets. CI runs the same
-fixture check.
+The check uses only files in this repository and CI runs the same fixture check.
 
-## Public-Safety Boundary
+## Fixture Scope
 
-This repository intentionally excludes private generated artifacts and private
-review history. It uses synthetic fixture review records and source text written
-only for this demo.
+This repository uses synthetic fixture review records and source text written
+for the demo corpus.

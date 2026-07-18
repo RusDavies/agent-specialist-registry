@@ -3,9 +3,9 @@
 This showcase should contain only synthetic fixture text and generated outputs
 derived from that fixture text.
 
-Do not add private source corpora, Discord message IDs, internal approval
-evidence, lifecycle files, private TODOs, deploy keys, repository secrets, or
-generated artifacts copied from the private working registry.
+Keep the repository self-contained: source text should live under `fixtures/`,
+generated files should be reproducible from those fixtures, and CI should not
+depend on external checkout credentials.
 
 Before publishing or accepting a change, run:
 

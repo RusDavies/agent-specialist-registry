@@ -31,7 +31,7 @@ REQUIRED_PUBLIC_FILES = {
 FORBIDDEN_MANAGEMENT_PATHS = {
     "TODO.md",
     "LIFECYCLE_STATE.md",
-    "target_split_state.md",
+    "target_" + "split_state.md",
     "refs",
     "public-showcase",
 }
@@ -39,7 +39,7 @@ ALLOWED_SOURCE_REPOS = {
     "fixtures/docs-management-practices",
     "fixtures/docs-practitioner-practices",
 }
-PRIVATE_PATTERNS = [
+FORBIDDEN_TEXT_PATTERNS = [
     "DOCS_" + "MANAGEMENT_PRACTICES_DEPLOY_KEY",
     "DOCS_" + "PRACTITIONER_PRACTICES_DEPLOY_KEY",
     "ssh-" + "key:",
@@ -421,11 +421,11 @@ def check_public_safety() -> list[str]:
         if not path.is_file() or ".git" in path.parts or "__pycache__" in path.parts:
             continue
         text = path.read_text(encoding="utf-8", errors="ignore")
-        for pattern in PRIVATE_PATTERNS:
+        for pattern in FORBIDDEN_TEXT_PATTERNS:
             if pattern in text:
-                errors.append(f"{path.relative_to(ROOT)} contains private pattern {pattern!r}")
+                errors.append(f"{path.relative_to(ROOT)} contains forbidden text pattern {pattern!r}")
         if DISCORD_ID_PATTERN.search(text):
-            errors.append(f"{path.relative_to(ROOT)} contains a Discord-like snowflake ID")
+            errors.append(f"{path.relative_to(ROOT)} contains a platform snowflake-like ID")
     return errors
 
 
